@@ -25,15 +25,17 @@
    ./gopush
 
 ## 关于配置文件conf.json
-{
-    "Name":           "GO PUSH SERVER",
-    "Address":        "127.0.0.1",
-    "Port":           8088,
-    "WriteWait":      10,
-    "PongWait":       60,
-    "PingPeriod":     54,
-    "MaxMessageSize": 1024
-}
+   ```
+   {
+      "Name":           "GO PUSH SERVER",
+      "Address":        "127.0.0.1",
+      "Port":           8088,
+      "WriteWait":      10,
+      "PongWait":       60,
+      "PingPeriod":     54,
+      "MaxMessageSize": 1024
+   }
+   ```
 
 具体配置项说明在utils下config.go有详细说明，请前往查看配置
 
