@@ -15,14 +15,17 @@
 ## Running the Go push
 
 1.首先你需要下载gopush
-
+```
    go get github.com/maxyang107/gopush
-
+```
 2.进入gopush目录执行下列命令
+```
    go build -o gopush ./
-
+```
 3.启动服务
+```
    ./gopush
+```
 
 ## 关于配置文件conf.json
    ```
@@ -43,17 +46,19 @@
 ### 前端连接websocket
 
 1.连接地址
-
+```
    ws://127.0.0.1:8088/ws
+```
 
 2.首次连接，客户端需要绑定客户端id，参数方式
-
+```
    {"userId":"1234", "option":"bindUserId"}
+```
 
 3.绑定userId后，可以正常使用业务，其他业务方法调用方式同上述一致
-
+```
    { "option":"xxxfunc","param1":"XXXXX","param2":"XXXXX"}
-
+```
 
 ### http业务
 
