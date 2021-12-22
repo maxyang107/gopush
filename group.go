@@ -2,7 +2,7 @@
  * @Description:
  * @Author: maxyang
  * @Date: 2021-12-14 14:53:00
- * @LastEditTime: 2021-12-15 16:33:13
+ * @LastEditTime: 2021-12-21 17:50:27
  * @LastEditors: liutq
  * @Reference:
  */
@@ -69,7 +69,6 @@ func (this *Group) LeftGroup(client *Client) {
  * @param {string} msg
  */
 func (this *Group) GroupBroadCast(msg string) {
-	fmt.Println(msg)
 	for _, cli := range this.Clients {
 		fmt.Println(cli.ClientId)
 		cli.send <- []byte(msg)

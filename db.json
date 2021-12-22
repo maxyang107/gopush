@@ -1,0 +1,12 @@
+{
+    "DbHost": "127.0.0.1",
+    "DbPort": 3306,
+    "DbName": "gopush",
+    "DbUser": "root",
+    "DbPwd":  "root12345",
+    "DbCharset": "utf8mb4",
+    "DbParseTime": "True",
+    "DbLoc": "Local",
+    "DbPrefix": "",
+    "DbType": "mysql"
+}

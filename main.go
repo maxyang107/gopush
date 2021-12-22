@@ -2,7 +2,7 @@
  * @Description:
  * @Author: maxyang
  * @Date: 2021-04-25 00:20:22
- * @LastEditTime: 2021-12-16 18:36:33
+ * @LastEditTime: 2021-12-22 12:07:13
  * @LastEditors: liutq
  * @Reference:
  */
@@ -21,12 +21,14 @@ import (
 var httpChan = make(chan string, 10)
 
 func main() {
+
 	FprintLogo()
 	flag.Parse()
 	hub := newHub()
 	go hub.run()
 	go ListenHttpChan(hub)
 	http.HandleFunc("/", ServeHome)
+	http.HandleFunc("/manager", manager)
 	http.HandleFunc("/ws", func(w http.ResponseWriter, r *http.Request) {
 		serveWs(hub, w, r)
 	})
