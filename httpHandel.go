@@ -2,7 +2,7 @@
  * @Description:
  * @Author: maxyang
  * @Date: 2021-12-14 14:42:05
- * @LastEditTime: 2021-12-22 13:58:58
+ * @LastEditTime: 2021-12-22 16:05:56
  * @LastEditors: liutq
  * @Reference:
  */
@@ -45,10 +45,12 @@ func ServeHome(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	defer db.Close()
+	db.LogMode(true)
+	fmt.Println(r.RemoteAddr)
 
-	result := db.First(&model.Auth{}, "source_code = ?", sourceCode)
+	result := db.Where(fmt.Sprintf("source like %q", ("%"+r.RemoteAddr))).First(&model.Auth{}, "source_code = ? ", sourceCode)
 
-	if result.RowsAffected == 0 {
+	if result.RowsAffected != 1 {
 		utils.GoLog(result.Error)
 		w.Write([]byte("没有权限访问"))
 		return

@@ -2,7 +2,7 @@
  * @Description: 关于go push
  * @Author: maxyang
  * @Date: 2021-04-25 00:20:22
- * @LastEditTime: 2021-12-22 15:33:29
+ * @LastEditTime: 2021-12-22 15:34:58
  * @LastEditors: liutq
  * @Reference: 
 -->
@@ -39,6 +39,7 @@
       "MaxMessageSize": 1024
    }
    ```
+   具体配置项说明在utils下config.go有详细说明，请前往查看配置
 
  ## 关于配置文件db.json
    ```
@@ -85,7 +86,7 @@ http服务主要提供管理websocket连接的功能，如创建分组，向分�
 该方法增加了权限控制，请求参数必须携带SourceCode参数，服务端验证了SourceCode与远端请求地址Source是否符合授权，如果没有授权的请求会被拦截
 
 调用方式：
-http://127.0.0.1:8088?func=createGroup&groupName=卡尔的房间
+http://127.0.0.1:8088?func=createGroup&groupName=卡尔的房间&SourceCode=02020
 
 如此便创建好了一个房间，客户端携带groupname：卡尔的房间，即可加入该房间
 
