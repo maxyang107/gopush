@@ -2,7 +2,7 @@
  * @Description: 关于go push
  * @Author: maxyang
  * @Date: 2021-04-25 00:20:22
- * @LastEditTime: 2021-12-16 18:53:09
+ * @LastEditTime: 2021-12-22 15:33:29
  * @LastEditors: liutq
  * @Reference: 
 -->
@@ -40,7 +40,23 @@
    }
    ```
 
-具体配置项说明在utils下config.go有详细说明，请前往查看配置
+ ## 关于配置文件db.json
+   ```
+   {
+      "DbHost": "127.0.0.1",
+      "DbPort": 3306,
+      "DbName": "gopush",
+      "DbUser": "root",
+      "DbPwd":  "root12345",
+      "DbCharset": "utf8mb4",
+      "DbParseTime": "True",
+      "DbLoc": "Local",
+      "DbPrefix": "",
+      "DbType": "mysql"
+   }
+   ```  
+
+具体配置项说明在utils下db.go有详细说明，请前往查看配置
 
 
 ### 前端连接websocket
@@ -66,8 +82,27 @@ gopush启动后会启动httpserver，访问地址：http://127.0.0.1:8088/
 
 http服务主要提供管理websocket连接的功能，如创建分组，向分组广播信息。（应用场景如群聊，分组推送站内信等）
 
+该方法增加了权限控制，请求参数必须携带SourceCode参数，服务端验证了SourceCode与远端请求地址Source是否符合授权，如果没有授权的请求会被拦截
+
 调用方式：
 http://127.0.0.1:8088?func=createGroup&groupName=卡尔的房间
 
 如此便创建好了一个房间，客户端携带groupname：卡尔的房间，即可加入该房间
 
+
+### 关于http业务权限控制
+权限设置接口
+```
+   http://127.0.0.1:8088/manager
+```
+请求方式POST
+
+请求参数
+```
+   {
+    "Source":"http://127.0.0.1:8088",//授权地址
+    "SourceCode":21321,//授权码
+    "SourceStatus":1,//授权状态
+    "SourceTip":"优海"//授权平台
+   }
+```
